@@ -67,10 +67,10 @@ def collect_data():
 
     training_data = []
 
-    mail = imaplib2.IMAP4_SSL(IMAP_SERVER)
+    mail = imaplib2.IMAP4_SSL(*IMAP_SERVER)
     mail.login(MAIL_USER, MAIL_PASSWORD)
 
-    mail.select("[Gmail]/All Mail", readonly=True)
+    mail.select(MAIL_BOX, readonly=True)
 
     result, data = mail.search(None, '(BODY "%s")' % ("@faqbot"))
 
